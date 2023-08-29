@@ -33,54 +33,51 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        // Left Click on Enemy
-        if (Input.GetMouseButtonDown(0))
-        {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-
-            if(Physics.Raycast(ray, out hit, Mathf.Infinity, m_Enemy))
-            {
-                m_Target = hit.collider.transform;
-                m_Anim.Play(Walk);
-                m_Anim.Play(Attack);
-                m_Agent.SetDestination(m_Target.position);
-
-
-            }
-
-            /*float distancetoenemy = Vector3.Distance(this.transform.position, target.position);
-            if (distancetoenemy < distancethreshole)
-            {
-                m_Anim.Play(Attack);
-            }*/
-        }
-
-        // Right Click on Ground
-        if(Input.GetMouseButtonDown(1))
-        {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity, m_Ground))
-            {
-                m_Target = null;
-                m_Anim.Play(Walk);
-                //m_Anim.Play(Attack);
-
-                m_Agent.SetDestination(hit.point);
-
-            }
-
-            
-        }
-
-       
         if (characterstatus.isdead)
         {
             m_Anim.Play(Die);
         }
 
+        else
+        {
 
+            // Left Click on Enemy
+            if (Input.GetMouseButtonDown(0))
+            {
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                RaycastHit hit;
+
+                if (Physics.Raycast(ray, out hit, Mathf.Infinity, m_Enemy))
+                {
+                    m_Target = hit.collider.transform;
+                    m_Anim.Play(Walk);
+                    m_Anim.Play(Attack);
+                    m_Agent.SetDestination(m_Target.position);
+
+
+                }
+
+            }
+
+            // Right Click on Ground
+            if (Input.GetMouseButtonDown(1))
+            {
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                RaycastHit hit;
+
+                if (Physics.Raycast(ray, out hit, Mathf.Infinity, m_Ground))
+                {
+                    m_Target = null;
+                    m_Anim.Play(Walk);
+                    //m_Anim.Play(Attack);
+
+                    m_Agent.SetDestination(hit.point);
+
+                }
+
+
+            }
+
+        }
     }
 }

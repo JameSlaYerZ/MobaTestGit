@@ -159,7 +159,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 48.8, y: -50}
+  m_AnchoredPosition: {x: 48.80005, y: -50}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &125886052
@@ -402,6 +402,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c4f07dd786860f408ce3b607890c9bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  status: {fileID: 8422892626402161626}
+  playerTransform: {fileID: 1992625137383170439}
+  standingPoint: {fileID: 439851413}
+  returnDistance: 10
 --- !u!114 &204497326
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -444,6 +448,59 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 1
+--- !u!1 &214271697
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 214271698}
+  - component: {fileID: 214271699}
+  m_Layer: 7
+  m_Name: colider
+  m_TagString: weapon
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &214271698
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 214271697}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.552, z: 0}
+  m_LocalScale: {x: 0.38128, y: 1.3397036, z: 0.38128}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8422892626401996407}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &214271699
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 214271697}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &439851409
 GameObject:
   m_ObjectHideFlags: 0
@@ -2281,6 +2338,8 @@ GameObject:
   - component: {fileID: 204497327}
   - component: {fileID: 1992625137390325340}
   - component: {fileID: 1992625137390325341}
+  - component: {fileID: 1992625137390325343}
+  - component: {fileID: 1992625137390325342}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -3661,6 +3720,46 @@ MonoBehaviour:
   range: 2
   speed: 3
   isdead: 0
+--- !u!54 &1992625137390325342
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1992625137383079399}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &1992625137390325343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1992625137383079399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3a0d5dd57f080246a3a6a5fe3f0cbf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterstatus: {fileID: 1992625137390325341}
 --- !u!137 &1992625137394643103
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
@@ -4153,6 +4252,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 512311172052516411}
+  - {fileID: 214271698}
   m_Father: {fileID: 8422892626401996743}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &8422892626401996409
@@ -6395,6 +6495,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3a0d5dd57f080246a3a6a5fe3f0cbf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterstatus: {fileID: 8422892626402161626}
 --- !u!1 &8422892626402161629
 GameObject:
   m_ObjectHideFlags: 0

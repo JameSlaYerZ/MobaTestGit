@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class hitbox : MonoBehaviour
 {
+    public CharacterStatus characterstatus;
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == "weapon")
         {
-            CharacterStatus status = other.gameObject.GetComponentInParent<CharacterStatus>();
-            status.GetHit(status.atk);
+            characterstatus.GetHit(characterstatus.atk);
         }
     }
 }

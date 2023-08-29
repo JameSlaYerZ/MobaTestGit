@@ -5,10 +5,10 @@ using UnityEngine;
 public class CharacterStatus : MonoBehaviour
 {
    
-    [SerializeField] private int hp;
+    [SerializeField] public int hp;
     [SerializeField] public int atk;
     [SerializeField] public int range;
-    [SerializeField] private float speed;
+    [SerializeField] public float speed;
 
     public bool isdead;
 
@@ -22,7 +22,7 @@ public class CharacterStatus : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Isdead();
     }
 
     public void GetHit(int damage)
